@@ -18,26 +18,52 @@ db.settings(settings);
 export default {
   data() {
     return {
-
+      userId: '',
+      db: db,
+      user: null,
+      loadingUser: true
     }
   },
   methods: {
+    logout() {
+      firebase.auth().signOut().then(() => {
+        location.reload()
+      })
+      .catch((err) => {
+        throw err;
+      });
+      this.user = null;
+    }
 
   },
   mounted() {
-    
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.userId = user.uid;
+        this.user = true;
+        this.loadingUser = false;
+      }
+      else {
+        this.loadingUser = false;
+      }
+    })
   }
 }
 
 </script>
 
 <style lang="scss">
+@import '@/globalVars.scss';
+
+@font-face {
+  font-family: athelas;
+  src: url(./assets/fonts/Athelas-Regular.ttf);
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: athelas;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background: $background-blue;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -45,14 +71,33 @@ export default {
   height: 100%;
   min-height: 100%;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+
+.white-widget {
+  background: white;
+  padding: 5px 40px 15px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 15px rgba(0,0,0,.5);
+  margin-bottom: 30px;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+.item {
+  margin: 10px 30px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: .1s;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+  }
+  img {
+    width: 70px;
   }
 }
+
 </style>
