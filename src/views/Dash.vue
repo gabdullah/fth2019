@@ -5,15 +5,17 @@
     </div>
 
     <div id="top-header">
-        <img src="@/assets/logo.png" style="padding-top:15px;">
+        <router-link to="/">
+            <img src="@/assets/logo.png" style="padding-top:15px;">
+        </router-link>
         <img src="@/assets/default_profile.png" class="profile-pic">
     </div>
 
     <div id="menu-options">
-        <router-link tag="div" to="/">Find a Look</router-link>
-        <router-link tag="div" to="/">Make a Look</router-link>
-        <router-link tag="div" to="/">Your Faves</router-link>
-        <router-link tag="div" to="/">Connect</router-link>
+        <router-link tag="div" :to="{ name: 'looks' }">Find a Look</router-link>
+        <router-link tag="div" :to="{ name: 'make' }">Make a Look</router-link>
+        <router-link tag="div" :to="{ name: 'faves' }">Your Faves</router-link>
+        <router-link tag="div" :to="{ name: 'connect' }">Connect</router-link>
     </div>
 
     <div id="content">
@@ -74,6 +76,13 @@
     align-items: center;
     font-size: 25px;
     height: 70px;
+    div {
+        opacity: .5;
+        cursor: pointer;
+    }
+    .router-link-active {
+        opacity: 1;
+    }
 }
 #content {
     grid-area: content;
