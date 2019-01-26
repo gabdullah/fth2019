@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/globalVars.scss';
 
 @font-face {
   font-family: athelas;
@@ -41,7 +42,7 @@ export default {
   font-family: athelas;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  background: $background-blue;
   position: absolute;
   top: 0px;
   left: 0px;

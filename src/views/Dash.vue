@@ -38,11 +38,10 @@
     height: 250px;
     position: absolute;
     width: 100%;
-    z-index: -1;
+    z-index: 1;
 }
 
 #dashboard {
-    z-index: 1;
     width: 100%;
     display: grid;
     grid-template-columns: 15% 70% 15%;
@@ -54,6 +53,7 @@
 }
 
 #top-header {
+    z-index: 10;
     grid-area: top-header;
     display: flex;
     justify-content: space-between;
@@ -69,6 +69,7 @@
 }
 
 #menu-options {
+    z-index: 10;
     grid-area: menu-options;
     display: flex;
     color: white;
@@ -85,6 +86,7 @@
     }
 }
 #content {
+    z-index: 10;
     grid-area: content;
 
 }
