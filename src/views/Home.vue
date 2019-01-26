@@ -8,9 +8,9 @@
       <img class="upcycle-example" src="../assets/altered-clothes-example.png" alt="Altered clothes example">
     </div>
 
-    <div class="text-talk">
-      <h1>Making Fashion Affordable</h1>
-      <h1>Networking to Empower Artists</h1>
+    <div class="text-div">
+      <h1>Affordable fashion through recycling.</h1>
+      <h1>Empowering artists through networking.</h1>
     </div>
 
     <div class="button-div">
@@ -39,20 +39,21 @@ button {
   border: none;
   width: 30%;
   padding: 10px 10px 10px 10px;
+  box-shadow: 7px 7px 1px $blue;
   cursor: pointer;
+  font-family: athelas;
+  font-size: 18px;
+  font-weight: bold;
+  color: $purple;
 }
 
 button:hover {
 
 }
 
-img {
-
-}
-
 h1 {
   color: #827a7a;
-  font-size: 14pt
+  font-size: 24pt
 }
 
 .home {
@@ -61,23 +62,26 @@ h1 {
 }
 
 .logo-div {
-  align-content: middle;
-  position: absolute; 
-  padding: 120px;
+  max-width: 50%;
+  padding-top: 150px;
+  padding-left: 150px;
+  float: left;
 }
 
 .example-div {
-  position: absolute;
-  align-content: right;
-}
-
-.upcycle-logo {
-  align-content: right;
+  float: right;
 }
 
 .upcycle-example {  
+  float: right;
   width: 22%;
-  box-shadow: 12px 12px $pink;
+  box-shadow: 20px 20px 1px $pink;
+  margin-right: 200px;
+}
+
+.text-div {
+  width: 40%;
+  text-align: right;
 }
 
 .button-div {
