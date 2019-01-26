@@ -99,7 +99,6 @@ export default {
   img {
     width: 70px;
   }
-<<<<<<< HEAD
 }
 .selected {
   border: 2px solid $blue;
@@ -126,8 +125,6 @@ button {
   &:not(.inactive) {
     opacity: 1;
   }
-=======
->>>>>>> dfa2813530edfb06c94c53d6db107313759015a4
 }
 
 </style>
