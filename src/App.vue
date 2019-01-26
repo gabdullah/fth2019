@@ -54,5 +54,6 @@ export default {
   padding: 5px 40px 15px;
   border-radius: 15px;
   box-shadow: 1px 1px 15px rgba(0,0,0,.5);
+  margin-bottom: 30px;
 }
 </style>
