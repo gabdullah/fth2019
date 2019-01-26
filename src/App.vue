@@ -32,8 +32,13 @@ export default {
 </script>
 
 <style lang="scss">
+
+@font-face {
+  font-family: athelas;
+  src: url(./assets/fonts/Athelas-Regular.ttf);
+}
 #app {
-  font-family: 'Times New Roman', serif;
+  font-family: athelas;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
