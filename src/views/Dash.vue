@@ -5,9 +5,7 @@
     </div>
 
     <div id="top-header">
-        <router-link to="/">
-            <img src="@/assets/logo.png" style="padding-top:15px;">
-        </router-link>
+        <img src="@/assets/upcycle-logo.png" style="padding-top:15px;">
         <img src="@/assets/default_profile.png" class="profile-pic">
     </div>
 

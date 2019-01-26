@@ -18,14 +18,35 @@ db.settings(settings);
 export default {
   data() {
     return {
-
+      userId: '',
+      db: db,
+      user: null,
+      loadingUser: true
     }
   },
   methods: {
+    logout() {
+      firebase.auth().signOut().then(() => {
+        location.reload()
+      })
+      .catch((err) => {
+        throw err;
+      });
+      this.user = null;
+    }
 
   },
   mounted() {
-    
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.userId = user.uid;
+        this.user = true;
+        this.loadingUser = false;
+      }
+      else {
+        this.loadingUser = false;
+      }
+    })
   }
 }
 
@@ -47,6 +68,7 @@ export default {
   top: 0px;
   left: 0px;
   width: 100%;
+  height: 100%;
   min-height: 100%;
 }
 
@@ -77,6 +99,7 @@ export default {
   img {
     width: 70px;
   }
+<<<<<<< HEAD
 }
 .selected {
   border: 2px solid $blue;
@@ -103,6 +126,8 @@ button {
   &:not(.inactive) {
     opacity: 1;
   }
+=======
+>>>>>>> dfa2813530edfb06c94c53d6db107313759015a4
 }
 
 </style>
