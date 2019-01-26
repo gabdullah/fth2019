@@ -50,6 +50,7 @@
         "margin-left    top-header      margin-right "
         "margin-left    menu-options    margin-right"
         "margin-left    content         margin-right ";
+    padding-bottom: 300px;
 }
 
 #top-header {

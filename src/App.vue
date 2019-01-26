@@ -51,6 +51,7 @@ export default {
 }
 
 .white-widget {
+  position: relative;
   background: white;
   padding: 5px 40px 15px;
   border-radius: 15px;
@@ -72,6 +73,35 @@ export default {
   transition-duration: .1s;
   &:hover {
     box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+  }
+  img {
+    width: 70px;
+  }
+}
+.selected {
+  border: 2px solid $blue;
+  margin: 8px 28px;
+}
+
+button {
+  font-family: athelas;
+}
+
+.blue-button {
+  background: $blue;
+  color: $background-blue;
+  font-size: 18px;
+  padding: 10px 30px;
+  border: none;
+  box-shadow: 5px 5px 0px $pink;
+  transition-duration: .2s;
+  cursor: pointer;
+  &:hover:not(.inactive) {
+      box-shadow: 10px 10px 0px $pink;
+  }
+  opacity: .5;
+  &:not(.inactive) {
+    opacity: 1;
   }
 }
 
