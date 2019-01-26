@@ -8,6 +8,33 @@
   </div>
 </template>
 
+<script>
+import config from '@/config/config.js';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import Vue from 'vue';
+
+firebase.initializeApp(config);
+var db = firebase.firestore();
+const settings = {  };
+db.settings(settings);
+
+export default {
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+  mounted() {
+    
+  }
+}
+
+</script>
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
