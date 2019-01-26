@@ -4,27 +4,27 @@ export default [
         items: [
             {
                 name: 'Dress',
-                icon: '@/assets/icons/dress.png'
+                icon: 'dress.png'
             },
             {
                 name: 'Hoodie',
-                icon: '@/assets/icons/hoodie.png',
+                icon: 'hoodie.png',
             },
             {
                 name: 'Coat',
-                icon: '@/assets/icons/coat.png',
+                icon: 'coat.png',
             },
             {
                 name: 'Jacket',
-                icon: '@/assets/icons/jacket.png',
+                icon: 'jacket.png',
             },
             {
                 name: 'Top',
-                icon: '@/assets/icons/t-shirt.png',
+                icon: 't-shirt.png',
             },
             {
                 name: 'Polo',
-                icon: '@/assets/icons/polo.png',
+                icon: 'polo.png',
             },
         ]
     },
@@ -33,11 +33,11 @@ export default [
         items: [
             {
                 name: 'Skirt',
-                icon: '@assets/icons/skirt.png',
+                icon: 'skirt.png',
             },
             {
-                name: '',
-                icon: '@assets/icons/skirt.png',
+                name: 'Pants',
+                icon: 'jeans.png',
             },
         ]
     }
