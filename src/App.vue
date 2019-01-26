@@ -57,4 +57,22 @@ export default {
   box-shadow: 1px 1px 15px rgba(0,0,0,.5);
   margin-bottom: 30px;
 }
+
+.items {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+.item {
+  margin: 10px 30px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: .1s;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+  }
+}
+
 </style>

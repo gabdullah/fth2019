@@ -36,8 +36,8 @@ export default [
                 icon: 'skirt.png',
             },
             {
-                name: '',
-                icon: 'skirt.png',
+                name: 'Pants',
+                icon: 'jeans.png',
             },
         ]
     }

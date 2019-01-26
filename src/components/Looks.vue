@@ -6,8 +6,13 @@
     </div>
     <div v-for="catagory in clothes" class="white-widget">
         <h2>{{catagory.name}}</h2>
-        <img v-for="item in catagory.items" :src="'/assets/icons/' + item.icon">
-        <img src="@/assets/icons/belt.png">
+        <div class="items">
+            <div class="item" v-for="item in catagory.items">
+                <img :src="'/icons/' + item.icon">
+                <br><br>
+                {{item.name}}
+            </div>
+        </div>
     </div>
 </div>
 </template>
