@@ -3,7 +3,7 @@
     <div id="purple-bar">
     </div>
     <div id="top-header">
-        <img src="@/assets/logo.png" style="padding-top:15px;">
+        <img src="@/assets/upcycle-logo.png" style="padding-top:15px;">
         <img src="@/assets/default_profile.png" class="profile-pic">
     </div>
 </div>
