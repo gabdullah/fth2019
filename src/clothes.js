@@ -54,7 +54,7 @@ export default [
             },
             {
                 name: 'Buttons',
-                icon: 'button.png'
+                icon: 'circular-button.png'
             },
             {
                 name: 'Earrings',

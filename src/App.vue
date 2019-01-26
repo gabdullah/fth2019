@@ -18,14 +18,35 @@ db.settings(settings);
 export default {
   data() {
     return {
-
+      userId: '',
+      db: db,
+      user: null,
+      loadingUser: true
     }
   },
   methods: {
+    logout() {
+      firebase.auth().signOut().then(() => {
+        location.reload()
+      })
+      .catch((err) => {
+        throw err;
+      });
+      this.user = null;
+    }
 
   },
   mounted() {
-    
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.userId = user.uid;
+        this.user = true;
+        this.loadingUser = false;
+      }
+      else {
+        this.loadingUser = false;
+      }
+    })
   }
 }
 
@@ -72,6 +93,9 @@ export default {
   transition-duration: .1s;
   &:hover {
     box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+  }
+  img {
+    width: 70px;
   }
 }
 
