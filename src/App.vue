@@ -143,6 +143,23 @@ button {
     opacity: 1;
   }
 } 
+.pink-button {
+  background: $pink;
+  color: black;
+  font-size: 18px;
+  padding: 10px 30px;
+  border: none;
+  box-shadow: 5px 5px 0px $blue;
+  transition-duration: .2s;
+  cursor: pointer;
+  &:hover:not(.inactive) {
+      box-shadow: 10px 10px 0px $blue;
+  }
+  opacity: .5;
+  &:not(.inactive) {
+    opacity: 1;
+  }
+} 
 
 .auth-box {
   width: 50%;
