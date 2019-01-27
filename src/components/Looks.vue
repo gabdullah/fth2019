@@ -16,7 +16,7 @@
             <div class="item" v-for="item in catagory.items"
                 @click="select(item)"
                 :class="{
-                        'selected': selectedClothes[item.name]
+                        'selected': $parent.selectedClothes[item.name]
                     }">
                 <img :src="'/icons/' + item.icon">
                 <br><br>
@@ -24,12 +24,13 @@
             </div>
         </div>
     </div>
-    <button class="blue-button"
+    <router-link tag="button" to="/dashboard/results"
+        class="blue-button"
         :class="{
             'inactive': !itemSelected
         }">
         Find a Look!
-    </button>
+    </router-link>
 </div>
 </template>
 
@@ -42,17 +43,17 @@ export default {
     data() {
         return {
             clothes: clothes,
-            selectedClothes: {},
+            /*selectedClothes: {},*/
             itemSelected: false,
         }
     },
     methods: {
         select(item) {
             this.itemSelected = true;
-            if (!this.selectedClothes[item.name]) {
-                Vue.set(this.selectedClothes, item.name, true);
+            if (!this.$parent.selectedClothes[item.name]) {
+                Vue.set(this.$parent.selectedClothes, item.name, true);
             } else {
-                Vue.set(this.selectedClothes, item.name, false);
+                Vue.set(this.$parent.selectedClothes, item.name, false);
             }
         }
     }
