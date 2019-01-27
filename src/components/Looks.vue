@@ -52,8 +52,11 @@ export default {
             this.itemSelected = true;
             if (!this.$parent.selectedClothes[item.name]) {
                 Vue.set(this.$parent.selectedClothes, item.name, true);
+                this.$parent.tags.push(item.name)
             } else {
                 Vue.set(this.$parent.selectedClothes, item.name, false);
+                var index = this.$parent.tags.indexOf(item.name);
+                this.$parent.tags.splice(index, 1);
             }
         }
     }

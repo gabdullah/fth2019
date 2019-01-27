@@ -7,6 +7,7 @@
     <div class="white-widget" v-if="err != ''" style="text-align: center;">
     	<p>{{ err }}</p>
     </div>
+
 </div>
 </template>
 
@@ -24,10 +25,13 @@ export default {
 		
 	},
 	mounted() {
-		if (this.$parent.select.length == 0) { 
-			this.$parent.$parent.db.collection('looks').where('tags', 'array-contains', this.$parent.selectedClothes).get()
+		if (this.$parent.tags) { 
+			console.log(this.$parent.tags)
+			this.$parent.$parent.db.collection('looks').where('tags', 'array-contains', this.$parent.tags).get()
 			.then((querySnapshot) => {
+				console.log("passed")
 				querySnapshot.forEach((doc) => {
+					console.log(doc.data(), "|||")
 					this.displayedLooks.push(doc.data());
 				})
 			})
