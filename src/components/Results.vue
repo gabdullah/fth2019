@@ -40,6 +40,19 @@ export default {
 			console.error("There was an error! Check it out: ", error);
 			this.err = error;
 		})
+
+		/*this.displayedLooks.forEach((look) => {
+			var safe = true;
+			look.tags.forEach((tag) => {
+				//for (var i = 0; i < this.tags.length; i++)
+				this.tags.forEach((givenTag) => {
+					if (tag == givenTag) {
+						break;
+					}
+					else if (this.tags.length )
+				})
+			})
+		})*/
 		
 		//Uncomment when implement name search
 		/*else {
