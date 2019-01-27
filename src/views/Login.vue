@@ -2,10 +2,10 @@
   <div id="login">
     <img src="@/assets/login.png">
 		<div class="auth-box">
-			Email: <input type="text"><br>
-			Pass: <input type="password"><br><br><br>
+			Email: <input type="text" v-model="email"><br>
+			Pass: <input type="password" v-model="password"><br><br><br>
 
-			<button class="purple-button">Let's go!</button>
+			<button class="purple-button" @click="signIn()">Let's go!</button>
 		</div>
   </div>
 </template>

@@ -1,9 +1,10 @@
 <template>
-<div id="looks">
+<div id="looks" v-if="pickingClothes">
     <div class="white-widget">
         <h1>What did you use for your creation?</h1>
         <p>Select all the items you usedv.</p>
         <button class="pink-button" id="make-a-look"
+            @click="done()"
             :class="{
                 'inactive': !itemSelected
             }">
@@ -25,16 +26,44 @@
         </div>
     </div>
     <button class="pink-button"
+        @click="done()"
         :class="{
             'inactive': !itemSelected
         }">
         Make a Look!
     </button>
 </div>
+<div id="looks" v-else>
+    <div class="white-widget">
+        <h1>Final Product</h1>
+        <p>Tell us about your final product.</p>
+
+        <button class="blue-button" id="make-a-look"
+            @click="done()"
+            :class="{
+                'inactive': !itemSelected
+            }">
+            Submit Project!
+        </button>
+    </div>
+    <div class="white-widget">
+        <h2>Title</h2>
+        <input v-model="title">
+        <br>
+        <h2>Instructions</h2>
+        <textarea v-model="instructions"></textarea>
+    </div>
+    <div class="white-widget">
+        <p>Upload an image:</p>
+        <input type="file" ref="profileUpload" @change="onPictureUpload">
+
+    </div>
+</div>
 </template>
 
 <script>
 import Vue from 'vue';
+import firebase from 'firebase'
 
 import clothes from '@/clothes.js'
 
@@ -44,6 +73,11 @@ export default {
             clothes: clothes,
             selectedClothes: {},
             itemSelected: false,
+            pickingClothes: true, // Keeps track of whether we've selected our clothes yet
+
+            title: '',
+            instructions: '',
+            
         }
     },
     methods: {
@@ -54,6 +88,30 @@ export default {
             } else {
                 Vue.set(this.selectedClothes, item.name, false);
             }
+        },
+        done() {
+            if (this.itemSelected) {
+                this.pickingClothes = false;
+            }
+        },
+        onPictureUpload() {
+            var file = event.target.files[0];
+            this.loadingProfile = true;
+
+            var storageRef = firebase.storage().ref();
+            var locationStr = this.title + '.jpg';
+            console.log("Locationstr: ", locationStr);
+            var ref = storageRef.child(locationStr);
+            
+            var vm = this;
+            
+            // Uploading file to the database: 
+            ref.put(file).then(function(snapshot) {
+                console.log('Uploaded a file!', snapshot);
+                
+            }).catch((err) => {
+                console.error("Error uploading your pic: ", err);
+            })
         }
     }
 }
@@ -67,4 +125,14 @@ export default {
 
 }
 
+input {
+    background: none;
+    border: none;
+    border-bottom: solid 2px black;
+    font-size: 18px;
+}
+textarea {
+    width: 300px;
+    
+}
 </style>
