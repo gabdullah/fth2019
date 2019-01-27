@@ -4,6 +4,9 @@
         <h1>Results</h1>
         <p>Results.</p>
     </div>
+    <div class="white-widget" v-if="err != ''" style="text-align: center;">
+    	<p>{{ err }}</p>
+    </div>
 </div>
 </template>
 
@@ -18,11 +21,11 @@ export default {
 		}
 	},
 	methods: {
-
+		
 	},
 	mounted() {
 		if (this.$parent.select.length == 0) { 
-			this.$parent.$parent.db.collection('looks').where('tags', 'array-contains', this.$parent.select).get()
+			this.$parent.$parent.db.collection('looks').where('tags', 'array-contains', this.$parent.selectedClothes).get()
 			.then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
 					this.displayedLooks.push(doc.data());
@@ -32,7 +35,8 @@ export default {
 				this.err = error;
 			})
 		}
-		else {
+		//Uncomment when implement name search
+		/*else {
 			this.displayedLooks = this.$parent.$parent.db.collection('looks').where('creator', '==', this.$parent.name).get()
 			.then((querySnapshot) => {
 				if (querySnapshot.empty)
@@ -42,7 +46,7 @@ export default {
 						this.displayedLooks.push(doc.data());
 					})
 			})
-		}
+		}*/
 	}
 }
 
