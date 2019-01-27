@@ -110,13 +110,17 @@ export default {
             // Uploading file to the database: 
             ref.put(file).then(function(snapshot) {
                 console.log('Uploaded a file!', snapshot);
-                vm.$parent.$parent.db.collection('looks').add({
-                    url: locationStr,
-                    title: vm.title,
-                    instructions: vm.instructions
-                }).catch((err) => {
-                    console.error(err);
-                })
+                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    console.log('File available at', downloadURL);
+                    vm.$parent.$parent.db.collection('looks').add({
+                        url: downloadURL,
+                        title: vm.title,
+                        instructions: vm.instructions
+                    }).catch((err) => {
+                        console.error(err);
+                    })
+                });
+                
                 
             }).catch((err) => {
                 console.error("Error uploading your pic: ", err);
