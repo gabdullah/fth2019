@@ -50,6 +50,9 @@
         <h2>Title</h2>
         <input v-model="title">
         <br>
+        <h2>Created By</h2>
+        <input v-model="creator">
+        <br>
         <h2>Instructions</h2>
         <textarea v-model="instructions"></textarea>
     </div>
@@ -76,6 +79,7 @@ export default {
             pickingClothes: true, // Keeps track of whether we've selected our clothes yet
             tags: [],
             title: '',
+            creator: '',
             instructions: '',
             
         }
@@ -133,8 +137,10 @@ export default {
                     vm.$parent.$parent.db.collection('looks').add({
                         url: downloadURL,
                         title: vm.title,
+                        creator: vm.creator,
                         instructions: vm.instructions,
-                        tags: vm.tags
+                        tags: vm.tags,
+                        likes: 0,
                     }).catch((err) => {
                         console.error(err);
                     })
