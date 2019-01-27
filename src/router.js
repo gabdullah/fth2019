@@ -28,6 +28,7 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'dashboard',
+      redirect: '/dashboard/looks',
       component: Dash,
       children: [
         {

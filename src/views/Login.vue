@@ -25,7 +25,7 @@ export default {
   components: {
 
   },
-  method: {
+  methods: {
   	signIn() {
   		firebase.auth().signInWithEmailAndPassword(this.email, this.password)
   		.then((user) => {
@@ -33,7 +33,19 @@ export default {
   			this.$router.push('/dashboard');
   		})
   		.catch((error) => {
-  			this.err = error.message;
+  			firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+				.then((doc) => {
+					console.log(doc.user);
+					this.$parent.db.collection('users').doc(doc.user.uid)
+					.set({
+						id: doc.user.uid,
+						email: doc.user.email
+					})
+					this.$router.push('/dashboard');
+				})
+				.catch((error) => {
+					this.err = error.message;
+				})
   		});
   	}
   }
