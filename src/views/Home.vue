@@ -59,6 +59,9 @@ h1 {
 .home {
   background-color: $purple;
   height: 100%;
+  margin-top: 0px;
+  position: absolute;
+  width: 100%;
 }
 
 .logo-div {
