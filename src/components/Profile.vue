@@ -2,7 +2,7 @@
 <div id="profile">
     <div class="white-widget">
         <center>
-            <img src="https://cdn.myanimelist.net/images/characters/2/366639.jpg" class="profile-picture" alt="fuck">
+            <img src="@/assets/default_profile.png" class="profile-picture" alt="fuck">
             <h2>User</h2>
         </center>
         <p></p>

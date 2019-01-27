@@ -48,7 +48,7 @@ button {
 }
 
 button:hover {
-
+  box-shadow: 10px 10px 0px $blue;
 }
 
 h1 {

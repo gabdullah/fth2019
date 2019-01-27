@@ -13,7 +13,7 @@
 			<img :src="look.url">
 			<p>{{look.instructions}}</p>
 		</div>
-		
+		<p>{{look.creator}}</p>
 		<vue-star animate="animated bounceIn" color="#F05654" style="position: absolute;right: 0px;cursor:pointer;">
 			<i slot="icon" class="fa fa-heart"></i>
 		</vue-star>
