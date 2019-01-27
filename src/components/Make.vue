@@ -157,6 +157,7 @@ export default {
                 url: vm.downloadURL,
                 title: vm.title,
                 instructions: vm.instructions,
+                creator: vm.creator,
                 tags: vm.tags,
                 likes: 0,
             }).then(() => {

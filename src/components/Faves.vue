@@ -4,18 +4,20 @@
         <h1>Faves!</h1>
         <p>Here are some of the top trending recent picks:.</p>
     </div>
-    <div class="white-widget" v-for="(look, index) in displayedLooks" v-if="index > 2">
+    <div class="white-widget" v-for="(look, index) in displayedLooks">
 		<br>
 		<h1>{{look.title}}</h1>
 		<div class="look" >
 			<img :src="look.url">
 			<p>{{look.instructions}}</p>
 		</div>
-		
+		<p>{{look.creator}}</p>
+
 		<vue-star animate="animated bounceIn" color="#F05654" 
             style="position: absolute;right: 0px;bottom:30px;cursor:pointer;">
-			<i slot="icon" class="fa fa-heart"></i>
+			<i @click="like(index)" slot="icon" class="fa fa-heart"></i>
 		</vue-star>
+		<p style="position: absolute; right:45px; color: red;">{{look.likes}}</p>
 		<br>
 		<br>
 		<br>
@@ -41,10 +43,12 @@ export default {
 		VueStar
 	},
 	methods: {
-		
+		like(index) {
+			this.displayedLooks[index].likes += 1;
+		}
 	},
 	mounted() {
-		this.$parent.$parent.db.collection('looks').get()
+		this.$parent.$parent.db.collection('looks').orderBy('likes', 'desc').get()
 		.then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				this.displayedLooks.push(doc.data());
