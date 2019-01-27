@@ -14,8 +14,8 @@
     </div>
 
     <div class="button-div">
-      <button>Find a Look</button>
-      <button>Make a Look</button>
+      <router-link to="/dashboard/looks"><button>Find a Look</button></router-link>
+      <router-link to="/dashboard/make"><button>Make a Look</button></router-link>
     </div>
   </div>
 </template>
@@ -70,6 +70,7 @@ h1 {
 
 .example-div {
   float: right;
+  
 }
 
 .upcycle-example {  
@@ -77,6 +78,7 @@ h1 {
   width: 22%;
   box-shadow: 20px 20px 1px $pink;
   margin-right: 200px;
+  margin-top: 100px;
 }
 
 .text-div {
