@@ -1,6 +1,12 @@
 <template>
-  <div class="home">
-    <h1>Login</h1>
+  <div id="login">
+    <img src="@/assets/login.png">
+		<div class="auth-box">
+			Email: <input type="text"><br>
+			Pass: <input type="password"><br><br><br>
+
+			<button class="purple-button">Let's go!</button>
+		</div>
   </div>
 </template>
 
@@ -32,3 +38,20 @@ export default {
   	}
   }
 }
+</script>
+
+<style scoped lang="scss">
+@import '@/globalVars.scss';
+#login {
+	background: $purple;
+	position: absolute;
+	width: 100%;
+	min-height: 100%;
+
+	text-align: center;
+	img {
+		margin-top: 200px;
+		margin-left: -80px;
+	}
+}
+</style>

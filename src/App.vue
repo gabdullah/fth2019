@@ -126,5 +126,54 @@ button {
     opacity: 1;
   }
 }
+.purple-button {
+  background: $purple;
+  color: $background-blue;
+  font-size: 18px;
+  padding: 10px 30px;
+  border: none;
+  box-shadow: 5px 5px 0px $pink;
+  transition-duration: .2s;
+  cursor: pointer;
+  &:hover:not(.inactive) {
+      box-shadow: 10px 10px 0px $pink;
+  }
+  opacity: .5;
+  &:not(.inactive) {
+    opacity: 1;
+  }
+} 
+
+.auth-box {
+  width: 50%;
+  height: 300px;
+  background: $blue;
+  border: solid 7px white;
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 100px;
+  color: white;
+  &:before {
+    content: '';
+    display: none;
+    position: absolute;
+    transform: translate(-50%);
+    margin-top: 10px;
+    width: 96%;
+    height: 270px;
+    border: solid 3px white;
+  }
+
+  input {
+    margin-top: 50px;
+    font-size: 18px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-family: athelas;
+
+  }
+}
 
 </style>
