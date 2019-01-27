@@ -7,10 +7,9 @@ import Dash from './views/Dash.vue'
 import Looks from './components/Looks.vue';
 import Faves from './components/Faves.vue';
 import Make from './components/Make.vue';
-import Connect from './components/Connect.vue';
+import Profile from './components/Profile.vue';
 import Results from './components/Results.vue';
 
-import Profile from './views/Profile.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 
@@ -47,9 +46,9 @@ export default new Router({
           component: Make
         },
         {
-          path: 'connect',
-          name: 'connect',
-          component: Connect
+          path: 'profile',
+          name: 'profile',
+          component: Profile
         },
         {
           path: 'results',
@@ -57,11 +56,6 @@ export default new Router({
           component: Results
         }
       ]
-    },
-    {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile,
     },
     {
       path: '/login',

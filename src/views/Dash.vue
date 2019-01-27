@@ -6,14 +6,14 @@
 
     <div id="top-header">
         <router-link to="/"><img src="@/assets/upcycle-logo.png" style="padding-top:15px;"></router-link>
-        <img src="@/assets/default_profile.png" class="profile-pic">
+        <router-link to="/dashboard/profile"><img src="@/assets/default_profile.png" class="profile-pic"></router-link>
     </div>
 
     <div id="menu-options">
         <router-link tag="div" :to="{ name: 'looks' }">Find a Look</router-link>
         <router-link tag="div" :to="{ name: 'make' }">Make a Look</router-link>
         <router-link tag="div" :to="{ name: 'faves' }">Your Faves</router-link>
-        <router-link tag="div" :to="{ name: 'connect' }">Connect</router-link>
+        <router-link tag="div" :to="{ name: 'profile' }">Profile</router-link>
     </div>
 
     <div id="content">
