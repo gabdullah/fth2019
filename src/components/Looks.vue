@@ -3,12 +3,12 @@
     <div class="white-widget">
         <h1>What are you working with?</h1>
         <p>Select the type of item you have that you'd like to augment.</p>
-        <button class="blue-button" id="find-a-look"
+        <router-link tag="button" to="/dashboard/results" class="blue-button" id="find-a-look"
             :class="{
                 'inactive': !itemSelected
             }">
             Find a Look!
-        </button>
+        </router-link>
     </div>
     <div v-for="catagory in clothes" class="white-widget">
         <h2>{{catagory.name}}</h2>
