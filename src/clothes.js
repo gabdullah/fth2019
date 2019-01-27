@@ -40,9 +40,17 @@ export default [
                 icon: 'jeans.png',
             },
             {
+                name: 'Shorts',
+                icon: 'shorts.png'
+            },
+            {
                 name: 'Leggings',
                 icon: 'leggings.png'
             },
+            {
+                name: 'Underwear',
+                icon: 'underwear.png'
+            }
         ]
     },
     {
