@@ -133,16 +133,16 @@ export default {
                 snapshot.ref.getDownloadURL().then(function(downloadURL) {
                     console.log('File available at', downloadURL);
                     vm.downloadURL = downloadURL;
-                    vm.$parent.$parent.db.collection('looks').add({
-                        url: downloadURL,
-                        title: vm.title,
-                        creator: vm.creator,
-                        instructions: vm.instructions,
-                        tags: vm.tags,
-                        likes: 0,
-                    }).catch((err) => {
-                        console.error(err);
-                    })
+                    // vm.$parent.$parent.db.collection('looks').add({
+                    //     url: downloadURL,
+                    //     title: vm.title,
+                    //     creator: vm.creator,
+                    //     instructions: vm.instructions,
+                    //     tags: vm.tags,
+                    //     likes: 0,
+                    // }).catch((err) => {
+                    //     console.error(err);
+                    // })
                 });
                 
                 
