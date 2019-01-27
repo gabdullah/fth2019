@@ -74,7 +74,7 @@ export default {
             selectedClothes: {},
             itemSelected: false,
             pickingClothes: true, // Keeps track of whether we've selected our clothes yet
-
+            tags: [],
             title: '',
             instructions: '',
             
@@ -87,9 +87,13 @@ export default {
             this.itemSelected = true;
             if (!this.selectedClothes[item.name]) {
                 Vue.set(this.selectedClothes, item.name, true);
+                this.tags.push(item.name)
             } else {
                 Vue.set(this.selectedClothes, item.name, false);
+                var index = this.tags.indexOf(item.name);
+                this.tags.splice(index, 1);
             }
+            console.log(this.tags)
         },
         done() {
             if (this.itemSelected) {
@@ -105,18 +109,37 @@ export default {
             console.log("Locationstr: ", locationStr);
             var ref = storageRef.child(locationStr);
             
+            // var tags = []
+            // for (i in this.clothes.catagory) {
+            //     for (j in this.clothes.catagory[i]) {
+            //         var name = this.clothes.catagory[i].name[j]
+            //     }
+            // }
+
+            /*this.selectedClothes.forEach((article) => {
+                if (article == true)
+                    tags.push(article)
+                console.log(tags)
+            })*/
+
             var vm = this;
-            
+            console.log(this.tags)
+
             // Uploading file to the database: 
             ref.put(file).then(function(snapshot) {
                 console.log('Uploaded a file!', snapshot);
-                vm.$parent.$parent.db.collection('looks').add({
-                    url: locationStr,
-                    title: vm.title,
-                    instructions: vm.instructions
-                }).catch((err) => {
-                    console.error(err);
-                })
+                snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    console.log('File available at', downloadURL);
+                    vm.$parent.$parent.db.collection('looks').add({
+                        url: downloadURL,
+                        title: vm.title,
+                        instructions: vm.instructions,
+                        tags: vm.tags
+                    }).catch((err) => {
+                        console.error(err);
+                    })
+                });
+                
                 
             }).catch((err) => {
                 console.error("Error uploading your pic: ", err);

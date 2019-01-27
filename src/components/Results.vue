@@ -1,12 +1,17 @@
 <template>
 <div id="results">
     <div class="white-widget">
-        <h1>Results</h1>
-        <p>Results.</p>
+        <h1>Some inspiration for you:</h1>
     </div>
     <div class="white-widget" v-if="err != ''" style="text-align: center;">
     	<p>{{ err }}</p>
     </div>
+	<div class="white-widget">
+		<div class="look" v-for="look in displayedLooks">
+			<img :src="look.url">
+		</div>
+	</div>
+
 </div>
 </template>
 
@@ -14,6 +19,7 @@
 import * as firebase from 'firebase';
 
 export default {
+	name: 'results',
 	data() {
 		return {
 			displayedLooks: [],
@@ -24,17 +30,17 @@ export default {
 		
 	},
 	mounted() {
-		if (this.$parent.select.length == 0) { 
-			this.$parent.$parent.db.collection('looks').where('tags', 'array-contains', this.$parent.selectedClothes).get()
-			.then((querySnapshot) => {
-				querySnapshot.forEach((doc) => {
-					this.displayedLooks.push(doc.data());
-				})
+		this.$parent.$parent.db.collection('looks').get()
+		.then((querySnapshot) => {
+			querySnapshot.forEach((doc) => {
+				this.displayedLooks.push(doc.data());
 			})
-			.catch((error) => {
-				this.err = error;
-			})
-		}
+		})
+		.catch((error) => {
+			console.error("There was an error! Check it out: ", error);
+			this.err = error;
+		})
+		
 		//Uncomment when implement name search
 		/*else {
 			this.displayedLooks = this.$parent.$parent.db.collection('looks').where('creator', '==', this.$parent.name).get()
@@ -51,3 +57,12 @@ export default {
 }
 
 </script>
+
+<style scoped lang="scss">
+.look {
+	img {
+		max-width: 100px;
+	}
+	width: 100px;
+}
+</style>
