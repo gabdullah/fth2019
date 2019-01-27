@@ -2,7 +2,7 @@
 <div id="looks" v-if="pickingClothes">
     <div class="white-widget">
         <h1>What did you use for your creation?</h1>
-        <p>Select all the items you usedv.</p>
+        <p>Select all the items you used.</p>
         <button class="pink-button" id="make-a-look"
             @click="done()"
             :class="{
@@ -79,6 +79,8 @@ export default {
             instructions: '',
             
         }
+    },
+    mounted() {
     },
     methods: {
         select(item) {
