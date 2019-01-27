@@ -15,7 +15,7 @@
 
     <div class="button-div">
       <router-link to="/dashboard/looks"><button>Find a Look</button></router-link>
-      <router-link to="/dashboard/make"><button>Make a Look</button></router-link>
+      <router-link to="/login"><button>Make a Look</button></router-link>
     </div>
   </div>
 </template>
