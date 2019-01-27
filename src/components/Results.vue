@@ -6,10 +6,17 @@
     <div class="white-widget" v-if="err != ''" style="text-align: center;">
     	<p>{{ err }}</p>
     </div>
-	<div class="white-widget">
-		<div class="look" v-for="look in displayedLooks">
+	<div class="white-widget" v-for="look in displayedLooks">
+		<br>
+		<h1>{{look.title}}</h1>
+		<div class="look" >
 			<img :src="look.url">
+			<p>{{look.instructions}}</p>
 		</div>
+		<br>
+		<vue-star animate="animated bounceIn" color="#F05654">
+			<i slot="icon" class="fa fa-heart"></i>
+		</vue-star>
 	</div>
 
 </div>
@@ -17,6 +24,8 @@
 
 <script>
 import * as firebase from 'firebase';
+import VueStar from 'vue-star'
+
 
 export default {
 	name: 'results',
@@ -25,6 +34,9 @@ export default {
 			displayedLooks: [],
 			err: ""
 		}
+	},
+	components: {
+		VueStar
 	},
 	methods: {
 		
@@ -61,8 +73,13 @@ export default {
 <style scoped lang="scss">
 .look {
 	img {
-		max-width: 100px;
+		width: 200px;
+		height: auto;
+		box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+		margin-right: 100px;
+		align-self: center;
 	}
-	width: 100px;
+	display: flex;
+
 }
 </style>

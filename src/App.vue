@@ -54,6 +54,7 @@ export default {
 
 <style lang="scss">
 @import '@/globalVars.scss';
+@import '@/animate.scss';
 
 @font-face {
   font-family: athelas;
