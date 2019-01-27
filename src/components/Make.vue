@@ -33,17 +33,20 @@
         Make a Look!
     </button>
 </div>
-<div id="looks" v-else>
+<div id="looks" v-else-if="!finalSubmission">
     <div class="white-widget">
         <h1>Final Product</h1>
         <p>Tell us about your final product.</p>
 
-        <button class="blue-button" id="make-a-look"
-            @click="done()"
+        <button class="blue-button" id="make-a-look" v-if="!loading"
+            @click="submit()"
             :class="{
                 'inactive': !itemSelected
             }">
             Submit Project!
+        </button>
+        <button class="blue-button" id="make-a-look" v-else>
+            Loading...
         </button>
     </div>
     <div class="white-widget">
@@ -57,6 +60,12 @@
         <p>Upload an image:</p>
         <input type="file" ref="profileUpload" @change="onPictureUpload">
 
+    </div>
+</div>
+<div id="looks" v-else>
+    <div class="white-widget">
+        <h1>Submitted!</h1>
+        <p>Thanks! You've earned +10 Upcycle experience!</p>
     </div>
 </div>
 </template>
@@ -77,7 +86,9 @@ export default {
             tags: [],
             title: '',
             instructions: '',
-            
+            downloadURL: '',
+            finalSubmission: false,
+            loading: false,
         }
     },
     mounted() {
@@ -130,19 +141,28 @@ export default {
                 console.log('Uploaded a file!', snapshot);
                 snapshot.ref.getDownloadURL().then(function(downloadURL) {
                     console.log('File available at', downloadURL);
-                    vm.$parent.$parent.db.collection('looks').add({
-                        url: downloadURL,
-                        title: vm.title,
-                        instructions: vm.instructions,
-                        tags: vm.tags
-                    }).catch((err) => {
-                        console.error(err);
-                    })
+                    vm.downloadURL = downloadURL;
                 });
                 
                 
             }).catch((err) => {
                 console.error("Error uploading your pic: ", err);
+            })
+        },
+        submit() {
+            var vm = this;
+            this.loading = true;
+            vm.$parent.$parent.db.collection('looks').add({
+                url: vm.downloadURL,
+                title: vm.title,
+                instructions: vm.instructions,
+                tags: vm.tags
+            }).then(() => {
+                vm.finalSubmission = true;
+                vm.loading = false
+            }).catch((err) => {
+                vm.loading = false
+                console.error(err);
             })
         }
     }
