@@ -11,6 +11,7 @@
 			<img :src="look.url">
 		</div>
 	</div>
+
 </div>
 </template>
 
