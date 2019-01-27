@@ -8,8 +8,7 @@ import Looks from './components/Looks.vue';
 import Faves from './components/Faves.vue';
 import Make from './components/Make.vue';
 import Connect from './components/Connect.vue';
-
-
+import Results from './components/Results.vue';
 
 import Profile from './views/Profile.vue'
 import Login from './views/Login.vue'
@@ -50,6 +49,11 @@ export default new Router({
           path: 'connect',
           name: 'connect',
           component: Connect
+        },
+        {
+          path: 'results',
+          name: 'results',
+          component: Results
         }
       ]
     },
