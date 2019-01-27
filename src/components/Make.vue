@@ -157,7 +157,8 @@ export default {
                 url: vm.downloadURL,
                 title: vm.title,
                 instructions: vm.instructions,
-                tags: vm.tags
+                tags: vm.tags,
+                likes: 0,
             }).then(() => {
                 vm.finalSubmission = true;
                 vm.loading = false

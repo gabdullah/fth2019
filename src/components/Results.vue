@@ -53,6 +53,16 @@ export default {
 			this.err = error;
 		})
 
+		var query = this.$parent.$parent.db.collection('looks')
+		this.$parent.tags.forEach((tag) => {
+			if (tag == true)
+				query = query.where('tags', '==', tag)
+		})
+		query.get()
+		.then((querySnapshot) => {
+			console.log(querySnapshot.docs)
+		})
+
 		/*this.displayedLooks.forEach((look) => {
 			var safe = true;
 			look.tags.forEach((tag) => {
