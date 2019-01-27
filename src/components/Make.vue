@@ -53,6 +53,9 @@
         <h2>Title</h2>
         <input v-model="title">
         <br>
+        <h2>Created By</h2>
+        <input v-model="creator">
+        <br>
         <h2>Instructions</h2>
         <textarea v-model="instructions"></textarea>
     </div>
@@ -85,6 +88,7 @@ export default {
             pickingClothes: true, // Keeps track of whether we've selected our clothes yet
             tags: [],
             title: '',
+            creator: '',
             instructions: '',
             downloadURL: '',
             finalSubmission: false,
@@ -119,19 +123,6 @@ export default {
             var locationStr = this.title + '.jpg';
             console.log("Locationstr: ", locationStr);
             var ref = storageRef.child(locationStr);
-            
-            // var tags = []
-            // for (i in this.clothes.catagory) {
-            //     for (j in this.clothes.catagory[i]) {
-            //         var name = this.clothes.catagory[i].name[j]
-            //     }
-            // }
-
-            /*this.selectedClothes.forEach((article) => {
-                if (article == true)
-                    tags.push(article)
-                console.log(tags)
-            })*/
 
             var vm = this;
             console.log(this.tags)
@@ -142,6 +133,16 @@ export default {
                 snapshot.ref.getDownloadURL().then(function(downloadURL) {
                     console.log('File available at', downloadURL);
                     vm.downloadURL = downloadURL;
+                    vm.$parent.$parent.db.collection('looks').add({
+                        url: downloadURL,
+                        title: vm.title,
+                        creator: vm.creator,
+                        instructions: vm.instructions,
+                        tags: vm.tags,
+                        likes: 0,
+                    }).catch((err) => {
+                        console.error(err);
+                    })
                 });
                 
                 

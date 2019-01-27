@@ -12,7 +12,7 @@
     <div id="menu-options">
         <router-link tag="div" :to="{ name: 'looks' }">Find a Look</router-link>
         <router-link tag="div" :to="{ name: 'make' }">Make a Look</router-link>
-        <router-link tag="div" :to="{ name: 'faves' }">Your Faves</router-link>
+        <router-link tag="div" :to="{ name: 'faves' }">Top Faves</router-link>
         <router-link tag="div" :to="{ name: 'profile' }">Profile</router-link>
     </div>
 
