@@ -10,25 +10,17 @@
 
     <div class="white-widget">
         <h1>Project Description</h1>
-        <p>Lorem Ipsum is for little cunts</p>
+        <p>o ye</p>
     </div>
 
     <div class="white-widget">
         <h1>User's Posts</h1>
     </div>
-
-    <div class="white-widget">
-        <h1>User's Favorites</h1>
-    </div>
 </div>
 </template>
 
 <script>
-/*
-    Description
-    
-    Faves(probably not)
-*/
+
 </script>
 
 <style>
